@@ -1,7 +1,7 @@
 import React from 'react'
-import './App.css'
 import Learn from './Learn'
 import Home from './Home';
+import Navbar from './Navbar';
 
 function App() {
   const pathname = window.location.pathname;
@@ -19,16 +19,36 @@ function App() {
   
   switch (page) {
     case "Home":
-      return <Home />;
+      return (
+        <div>
+          <Navbar />
+          <Home />
+        </div>
+      );
     
     case "Learn":
-      return <Learn />;
+      return (
+        <div>
+          <Navbar />
+          <Learn />
+        </div>
+      );
 
     case "404":
-      return <h1>404</h1>;
+      return (
+        <div>
+          <Navbar />
+          <h1>404</h1>
+        </div>
+      );
 
     default:
-      <Home />;
+      return (
+        <div>
+          <Navbar />
+          <Home />
+        </div>
+      );
   }
 }
 
