@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import './App.css'
+import chatgpt from './chatgptapi'
+
 
 function App() {
   const [count, setCount] = useState(0)
-
+  chatgpt()
   return (
     <div className="App">
       <div>
