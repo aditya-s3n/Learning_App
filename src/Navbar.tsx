@@ -9,7 +9,7 @@ function Navbar() {
             <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarText">
-            <ul className="navbar-nav d-flex mb-2 mb-lg-0 ">
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0 ">
                 <li className="nav-item">
                     <a className="nav-link active" aria-current="page" href="/">Home</a>
                 </li>

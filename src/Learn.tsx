@@ -1,9 +1,26 @@
 import { useState } from "react";
 import React from "react";
+import requestGPTData from "./utils/chat_gpt_reponse";
 
 function Learn() {
     const [prompt, setPrompt] = useState("");
+    const [result, setResult] = useState(["Please Input Something"]);
 
+    async function handleKeyDown (event: any) {
+        if (event.key === 'Enter') {
+            console.log(prompt);
+            if (prompt === "") {
+                setResult(["Please Input Something"]);
+            } else {
+                let data: any = await requestGPTData(prompt);
+                data = data?.split("\n");
+                console.log(data);
+                setResult(data);
+            }
+        }
+    };
+
+      
     return (
         <div>
 
@@ -33,10 +50,31 @@ function Learn() {
                     onChange={event => {
                         setPrompt(event.target.value);
                     }}
+                    onKeyDown={handleKeyDown}
                 />
             </div>
-            <button type="button" className="btn btn-lg btn-success ms-5 mt-2" >Start Learning!</button>
+            <button 
+                type="button" 
+                className="btn btn-lg btn-success ms-5 mt-2"
+                onClick={async () => {
+                    if (prompt === "") {
+                        setResult(["Please Input Something"]);
+                    } else {
+                        let data: any = await requestGPTData(prompt);
+                        data = data?.split("\n")
+                        setResult(data);
+                    }
+                }} 
+            >Start Learning!</button>
 
+            {  
+                <div className="ms-5 my-5">
+                    <h1>Result:</h1>
+                    {result.map((value) => {
+                        return <p className="fs-4 white-space: pre-line">{value}</p>
+                    })}
+                </div>
+            }
         </div>
     );
 }
