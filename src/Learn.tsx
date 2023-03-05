@@ -1,10 +1,17 @@
 import { useState } from "react";
 import React from "react";
 import requestGPTData from "./utils/chat_gpt_reponse";
+import LoadingBar from "./loadingbar";
+import { Button, ProgressBar } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
 
 function Learn() {
     const [prompt, setPrompt] = useState("");
     const [result, setResult] = useState(["Please Input Something"]);
+    const [progress, setProgress] = useState(0);
+    const [showProgressBar, setShowProgressBar] = useState(false);
 
     async function handleKeyDown (event: any) {
         if (event.key === 'Enter') {
@@ -19,8 +26,22 @@ function Learn() {
             }
         }
     };
+    
+  
+    const startProgressBar = () => {
+      setShowProgressBar(true);
+      const intervalId = setInterval(() => {
+        setProgress((prevProgress) => {
+          if (prevProgress >= 100) {
+            clearInterval(intervalId);
+            setShowProgressBar(false);
+            return prevProgress;
+          }
+          return prevProgress + 10;
+        });
+      }, 1000);
+    };
 
-      
     return (
         <div>
 
@@ -75,6 +96,8 @@ function Learn() {
                     })}
                 </div>
             }
+            <button type="button" className="btn btn-lg btn-success ms-5 mt-2" onClick={startProgressBar} >Start Learning!</button>
+            {showProgressBar && <ProgressBar now={progress} animated />}
         </div>
     );
 }
