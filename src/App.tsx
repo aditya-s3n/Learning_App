@@ -2,7 +2,6 @@ import React from 'react'
 import Learn from './Learn'
 import Home from './Home';
 import Navbar from './Navbar';
-import Loadingbar from './loadingbar';
 
 
 function App() {
@@ -26,7 +25,6 @@ function App() {
         <div>
           <Navbar />
           <Home />
-          <Loadingbar />
         </div>
       );
     
