@@ -1,10 +1,10 @@
 import { useState } from "react";
 import React from "react";
-import requestGPTData from "./utils/chat_gpt_reponse";
 import LoadingBar from "./loadingbar";
 import { Button, ProgressBar } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ImportantVideo from "./easteregg";
+import makeBackendRequest from "./utils/chat_gpt";
 
 
 
@@ -23,9 +23,8 @@ function Learn() {
         } else if (prompt === "dogaplan") {
             setEasterEgg(true);
         } else {
-            let data: any = await requestGPTData(prompt);
+            let data: any = await makeBackendRequest({ prompt: prompt });
             data = data?.split("\n");
-            console.log(data);
             setResult(data);
         }
     }
