@@ -1,9 +1,29 @@
 import { useState } from "react";
 import React from "react";
+import LoadingBar from "./loadingbar";
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import { Button, ProgressBar } from 'react-bootstrap';
 
 function Learn() {
     const [prompt, setPrompt] = useState("");
-
+    const [progress, setProgress] = useState(0);
+    const [showProgressBar, setShowProgressBar] = useState(false);
+  
+    const startProgressBar = () => {
+      setShowProgressBar(true);
+      const intervalId = setInterval(() => {
+        setProgress((prevProgress) => {
+          if (prevProgress >= 100) {
+            clearInterval(intervalId);
+            setShowProgressBar(false);
+            return prevProgress;
+          }
+          return prevProgress + 10;
+        });
+      }, 1000);
+    };
     return (
         <div>
 
@@ -35,8 +55,8 @@ function Learn() {
                     }}
                 />
             </div>
-            <button type="button" className="btn btn-lg btn-success ms-5 mt-2" >Start Learning!</button>
-
+            <button type="button" className="btn btn-lg btn-success ms-5 mt-2" onClick={startProgressBar} >Start Learning!</button>
+            {showProgressBar && <ProgressBar now={progress} animated />}
         </div>
     );
 }
