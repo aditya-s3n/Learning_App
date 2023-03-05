@@ -24,7 +24,7 @@ function App() {
       return (
         <div>
           <Navbar />
-          <Home />
+          <Learn />
         </div>
       );
     
@@ -48,7 +48,7 @@ function App() {
       return (
         <div>
           <Navbar />
-          <Home />
+          <Learn />
         </div>
       );
   }

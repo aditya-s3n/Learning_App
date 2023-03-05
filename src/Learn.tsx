@@ -15,7 +15,9 @@ function Learn() {
 
     async function handleKeyDown (event: any) {
         if (event.key === 'Enter') {
-            console.log(prompt);
+            
+            startProgressBar();
+
             if (prompt === "") {
                 setResult(["Please Input Something"]);
             } else {
@@ -78,6 +80,7 @@ function Learn() {
                 type="button" 
                 className="btn btn-lg btn-success ms-5 mt-2"
                 onClick={async () => {
+                    startProgressBar();
                     if (prompt === "") {
                         setResult(["Please Input Something"]);
                     } else {
@@ -96,7 +99,7 @@ function Learn() {
                     })}
                 </div>
             }
-            <button type="button" className="btn btn-lg btn-success ms-5 mt-2" onClick={startProgressBar} >Start Learning!</button>
+        
             {showProgressBar && <ProgressBar now={progress} animated />}
         </div>
     );
