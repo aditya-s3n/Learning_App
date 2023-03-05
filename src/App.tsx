@@ -2,7 +2,6 @@ import React from 'react'
 import Learn from './Learn'
 import Home from './Home';
 import Navbar from './Navbar';
-import Loadingbar from './loadingbar';
 
 function App() {
   const pathname = window.location.pathname;
@@ -24,7 +23,6 @@ function App() {
         <div>
           <Navbar />
           <Home />
-          <Loadingbar />
         </div>
       );
     
