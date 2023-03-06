@@ -57,7 +57,7 @@ function Learn() {
                 <h1>How it works:</h1>
                 <ol>
                     <li><p>Type what you want to learn, and see the results come in.</p></li>
-                    <li><p>Will give you a options on how to get started, and where to go after.</p></li>
+                    <li><p>Will give you options on how to get started, and where to go after.</p></li>
                     <li><p>GET A VALID CIRUCULUM</p></li>
                 </ol>
                 
