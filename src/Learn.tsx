@@ -20,7 +20,7 @@ function Learn() {
 
         if (prompt === "") {
             setResult(["Please Input Something"]);
-        } else if (prompt === "dogaplan") {
+        } else if (prompt === "doglaplan") {
             setEasterEgg(true);
         } else {
             let data: any = await makeBackendRequest({ prompt: prompt });
